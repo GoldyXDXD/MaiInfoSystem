@@ -22,17 +22,17 @@ public class FullMessageCreator {
         for (int i = 0; i < messageArray.length; i++) {
             int symbolIndex = new String(alphabet).indexOf(messageArray[i]);
             if (symbolIndex < 2) {
-                fullMessage += "00000" + Integer.toBinaryString(symbolIndex);
+                fullMessage += "0000000" + Integer.toBinaryString(symbolIndex);
             } else if (symbolIndex < 4) {
-                fullMessage += "0000" + Integer.toBinaryString(symbolIndex);
+                fullMessage += "000000" + Integer.toBinaryString(symbolIndex);
             } else if (symbolIndex < 8) {
-                fullMessage += "000" + Integer.toBinaryString(symbolIndex);
+                fullMessage += "00000" + Integer.toBinaryString(symbolIndex);
             } else if (symbolIndex < 16) {
-                fullMessage += "00" + Integer.toBinaryString(symbolIndex);
+                fullMessage += "0000" + Integer.toBinaryString(symbolIndex);
             } else if (symbolIndex < 32) {
-                fullMessage += "0" + Integer.toBinaryString(symbolIndex);
+                fullMessage += "000" + Integer.toBinaryString(symbolIndex);
             } else if (symbolIndex < 64) {
-                fullMessage += Integer.toBinaryString(symbolIndex);
+                fullMessage += "00" + Integer.toBinaryString(symbolIndex);
             }
         }
     }

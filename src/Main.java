@@ -28,9 +28,16 @@ public class Main {
         fullMessageCreator.encryptFullMessage(keyCreator.getKey());
         String encryptedMessage = fullMessageCreator.getEncryptedMessage();
 
+        //код хэмминга
+        HammingCode hammingCode = new HammingCode(encryptedMessage);
+        String radioMessage = hammingCode.encode();
+
         //вывод данных
         System.out.println("\n" + fullMessageCreator.getFullMessage());
         System.out.println(keyCreator.getKey());
         System.out.println(encryptedMessage);
+        System.out.println(radioMessage);
+        System.out.println(encryptedMessage.length());
+        System.out.println(radioMessage.length());
     }
 }
