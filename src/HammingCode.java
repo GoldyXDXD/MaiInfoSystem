@@ -10,18 +10,17 @@ public class HammingCode {
 
     public String encode() {
         String result = "";
-        for (int i = 0; i < this.startCode.length() / 8; i++) {
-            String messagePart = this.startCode.substring(i * 8, i * 8 + 8);
-            boolean[] infoBits = new boolean[8];
-            for (int j = 0; j < 8; j++) {
+        for (int i = 0; i < this.startCode.length() / 4; i++) {
+            String messagePart = this.startCode.substring(i * 4, i * 4 + 4);
+            boolean[] infoBits = new boolean[4];
+            for (int j = 0; j < 4; j++) {
                 infoBits[j] = messagePart.charAt(j) == '1' ? true : false;
             }
-            String[] checkBits = new String[4];
-            checkBits[0] = infoBits[0] ^ infoBits[1] ^ infoBits[3] ^ infoBits[4] ^ infoBits[6] ? "1" : "0";
-            checkBits[1] = infoBits[0] ^ infoBits[2] ^ infoBits[3] ^ infoBits[5] ^ infoBits[6] ? "1" : "0";
-            checkBits[2] = infoBits[1] ^ infoBits[2] ^ infoBits[3] ^ infoBits[7] ? "1" : "0";
-            checkBits[3] = infoBits[4] ^ infoBits[5] ^ infoBits[6] ^ infoBits[7] ? "1" : "0";
-            result += checkBits[0] + checkBits[1] + messagePart.charAt(0) + checkBits[2] + messagePart.charAt(1) + messagePart.charAt(2) + messagePart.charAt(3) + checkBits[3] + messagePart.charAt(4) + messagePart.charAt(5) + messagePart.charAt(6) + messagePart.charAt(7);
+            String[] checkBits = new String[3];
+            checkBits[0] = infoBits[1] ^ infoBits[3] ^ infoBits[2] ? "1" : "0";
+            checkBits[1] = infoBits[0] ^ infoBits[2] ^ infoBits[3] ? "1" : "0";
+            checkBits[2] = infoBits[0] ^ infoBits[1] ^ infoBits[3] ? "1" : "0";
+            result += checkBits[2] + checkBits[1] + messagePart.charAt(0) + checkBits[0] + messagePart.charAt(1) + messagePart.charAt(2) + messagePart.charAt(3);
         }
         return result;
     }

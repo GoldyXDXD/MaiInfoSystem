@@ -16,12 +16,16 @@ public class Main {
         FullMessageCreator fullMessageCreator = new FullMessageCreator(message);
         fullMessageCreator.createFullMessage(alphabet);
 
+        //ввод номера по списку
+        System.out.println("Введите номер:");
+        String nameNumber = scanner.nextLine();
+
         //ввод полинома
         System.out.println("Введите полином:");
         String polynomial = scanner.nextLine();
 
         //создание ключа
-        KeyCreator keyCreator = new KeyCreator(polynomial);
+        KeyCreator keyCreator = new KeyCreator(nameNumber, polynomial);
         keyCreator.generateKey(fullMessageCreator.getFullMessage().length());
 
         //шифрование
@@ -33,11 +37,9 @@ public class Main {
         String radioMessage = hammingCode.encode();
 
         //вывод данных
-        System.out.println("\n" + fullMessageCreator.getFullMessage());
-        System.out.println(keyCreator.getKey());
-        System.out.println(encryptedMessage);
-        System.out.println(radioMessage);
-        System.out.println(encryptedMessage.length());
-        System.out.println(radioMessage.length());
+        System.out.println("\n" + "Фамилия в двоичном виде:\n" + fullMessageCreator.getFullMessage() + "\n");
+        System.out.println("Псевдослучайная последовательность:\n" + keyCreator.getKey() + "\n");
+        System.out.println("Зашифрованное сообщение:\n" + encryptedMessage + "\n");
+        System.out.println("Сообщение кода Хэмминга:\n" + radioMessage + "\n");
     }
 }
